@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(주)고려정보기술 | Leading IT Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'c')) {
+          e.preventDefault();
+        }
+      });
+     </script>
+
+    <style>
+        :root {
+        --primary: #0066CC; /* 주요 색상: 파란색 계열 */
+        --secondary: #1E293B; /* 보조 색상: 어두운 회색 */
+        --yellow1: #FFFF00; /* 보조 색상: 노란색 */
+        --accent: #38BDF8; /* 강조 색상: 밝은 파란색 */
+        --text: #1E293B;     /* 텍스트 색상: 어두운 회색 */
+        --background: #F8FAFC;     /* 배경 색상: 아주 밝은 회색 */
+        --white: #FFFFFF;     /* 흰색 */
+	}
+
+        * {
+            margin: 0; /* 모든 요소의 기본 여백을 제거 */
+            padding: 0; /* 모든 요소의 기본 패딩을 제거 */
+            box-sizing: border-box; 
+		/* 박스 모델을 border-box로 설정하여 패딩과 테두리를 포함한 너비와 높이를 계산 */
+        }
+
+        body {
+	   /* 폰트 패밀리를 'Noto Sans KR'로 설정, sans-serif 대체 폰트 사용 */
+	   font-family: 'Noto Sans KR', sans-serif;
+	   /* 텍스트의 줄 높이를 1.6으로 설정 */
+	   line-height: 1.6;
+	   /* 텍스트 색상을 CSS 변수 --text로 설정 */
+	   color: var(--text);
+	   /* 배경 색상을 CSS 변수 --background로 설정 */
+	   background: var(--background);
+	   /* 수평 스크롤바 숨기기 */
+	   overflow-x: hidden;
+	}
+
+	.left-align {
+	    text-align: left; /* 왼쪽 정렬 */
+	}
+
+	.highlight {
+	    color: yellow;  /* 글자 색상을 노란색으로 설정 */
+	}
+
+        /* 헤더 스타일 */
+        .header {
+	    /* 헤더를 고정 위치로 설정 */
+	    position: fixed;
+  	    /* 헤더를 화면 상단에 위치시킴 */
+	    top: 0;
+ 	    /* 헤더를 왼쪽 끝에 맞춤 */
+	    left: 0;
+  	    /* 헤더를 오른쪽 끝에 맞춤 */
+	    right: 0;
+	    /* 배경색을 흰색으로 설정하고 투명도를 0.95로 설정 */
+	    background: rgba(255, 255, 255, 0.95);
+	    /* 배경에 블러 효과 적용 */
+	    backdrop-filter: blur(10px);
+	    /* 그림자 효과 추가 */
+	    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	    /* z-index를 1000으로 설정하여 다른 요소 위에 표시 */
+	    z-index: 1000;    
+	    /* 모든 속성의 변화에 대해 0.3초의 부드러운 전환 효과 적용 */
+	    transition: all 0.3s ease;
+	}
+
+        .header.scrolled {
+	    /* 스크롤 시 배경색을 흰색으로 설정하고 투명도를 0.98로 변경 */
+	    background: rgba(255, 255, 255, 0.98);
+	    /* 패딩을 위아래 0.5rem, 좌우는 0으로 설정 */
+	    padding: 0.5rem 0;
+	}
+
+        .nav {
+	    /* 최대 너비를 1400px로 설정 */
+	    max-width: 1400px;
+    	    /* 수평 중앙 정렬을 위해 자동 마진 설정 */
+	    margin: 0 auto;
+    	    /* 패딩을 1rem으로 설정 */
+	    padding: 1rem;
+    	    /* Flexbox를 사용하여 자식 요소들을 배치 */
+	    display: flex;
+    	    /* 자식 요소들 사이에 공간을 균등하게 배분 */
+	    justify-content: space-between;
+    	    /* 자식 요소들을 수직 중앙 정렬 */
+	    align-items: center;
+	}
+
+       .logo {
+	    /* 폰트 크기를 1.5rem으로 설정 */
+	    font-size: 1.5rem;
+	    /* 폰트 두께를 700으로 설정 (굵은 텍스트) */
+	    font-weight: 700;
+    	    /* 텍스트 색상을 CSS 변수 --primary로 설정 */
+	    color: var(--primary);
+    	    /* 텍스트 장식 제거 (밑줄 등) */
+	    text-decoration: none;
+    	    /* Flexbox를 사용하여 자식 요소들을 배치 */
+	    display: flex;
+	    /* 자식 요소들을 수직 중앙 정렬 */
+	    align-items: center;
+    	    /* 자식 요소들 사이에 0.5rem의 간격 추가 */
+	    gap: 0.5rem;
+	}
+
+        .nav-links {
+	    /* Flexbox를 사용하여 자식 요소들을 배치 */
+	    display: flex;
+    	    /* 자식 요소들 사이에 2rem의 간격 추가 */
+	    gap: 2rem;
+	}
+
+        .nav-links a {
+	    /* 텍스트 장식 제거 (밑줄 등) */
+	    text-decoration: none;
+	   /* 텍스트 색상을 CSS 변수 --text로 설정 */
+	    color: var(--text);
+    	    /* 폰트 두께를 500으로 설정 */
+	    font-weight: 500;
+    	    /* 모든 속성의 변화에 대해 0.3초의 부드러운 전환 효과 적용 */
+	    transition: all 0.3s;
+    	    /* 위치를 상대적으로 설정하여 자식 요소의 절대 위치 지정 가능 */
+	    position: relative;
+	}
+
+       .nav-links a::after {
+	    /* 가상의 요소를 생성 (내용은 없음) */
+	    content: '';
+	    /* 위치를 절대적으로 설정하여 부모 요소에 상대적으로 배치 */
+	    position: absolute;
+    	    /* 요소를 부모의 하단에서 5px 아래에 위치시킴 */
+	    bottom: -5px;
+    	    /* 부모 요소의 왼쪽 끝에 맞춤 */
+	    left: 0;
+    	    /* 초기 너비를 0으로 설정 (애니메이션 효과를 위해) */
+	    width: 0;
+    	    /* 높이를 2px로 설정 */
+	    height: 2px;
+	    /* 배경색을 CSS 변수 --primary로 설정 */
+	    background: var(--primary);
+	    /* 너비 변화에 대해 0.3초의 부드러운 전환 효과 적용 */
+	    transition: width 0.3s ease;
+	}
+
+        .nav-links a:hover::after {
+	    /* 링크에 마우스를 올렸을 때 가상의 요소의 너비를 100%로 설정 */
+	    width: 100%;
+	}
+
+        /* 히어로 섹션 */
+       .hero {
+	    /* 뷰포트 높이의 100%로 설정 (전체 화면 높이) */
+	    height: 100vh;
+    	    /* 위치를 상대적으로 설정하여 자식 요소의 절대 위치 지정 가능 */
+	    position: relative;
+    	    /* 자식 요소가 부모 요소를 넘지 않도록 숨김 */
+	    overflow: hidden;
+	}
+
+        .hero-slider {
+	    /* 너비를 100%로 설정하여 부모 요소의 너비에 맞춤 */
+	    width: 100%;
+    	    /* 높이를 100%로 설정하여 부모 요소의 높이에 맞춤 */
+	    height: 100%;
+	}
+
+        .hero-slide {
+	    /* 위치를 상대적으로 설정하여 자식 요소의 절대 위치 지정 가능 */
+	    position: relative;
+    	    /* 너비를 100%로 설정하여 부모 요소의 너비에 맞춤 */
+	    width: 100%;
+    	    /* 높이를 100%로 설정하여 부모 요소의 높이에 맞춤 */
+	    height: 100%;
+    	    /* Flexbox를 사용하여 자식 요소들을 중앙에 배치 */
+	    display: flex;
+    	    /* 자식 요소들을 수직 중앙 정렬 */
+	    align-items: center;
+    	    /* 자식 요소들을 수평 중앙 정렬 */
+	    justify-content: center;
+    	    /* 텍스트 색상을 CSS 변수 --white로 설정 */
+	    color: var(--white);
+	    /* 텍스트를 중앙 정렬 */
+	    text-align: center;
+	}
+
+        .hero-slide::before {
+	    /* 가상의 요소를 생성 (내용은 없음) */
+	    content: '';
+    	    /* 위치를 절대적으로 설정하여 부모 요소에 상대적으로 배치 */
+	    position: absolute;
+    	    /* 부모 요소의 상단에 맞춤 */
+	    top: 0;
+    	    /* 부모 요소의 왼쪽에 맞춤 */
+	    left: 0;
+    	    /* 부모 요소의 오른쪽에 맞춤 */
+	    right: 0;
+    	    /* 부모 요소의 하단에 맞춤 */
+	    bottom: 0;
+    	    /* 반투명 검정색 배경 설정 (투명도 0.5) */
+	    background: rgba(0, 0, 0, 0.5);
+    	    /* z-index를 1로 설정하여 다른 요소들 위에 위치하게 함 */
+	    z-index: 1;
+	}
+
+       .hero-content {
+	    /* 위치를 상대적으로 설정하여 자식 요소의 절대 위치 지정 가능 */
+	    position: relative;
+	    /* z-index를 2로 설정하여 다른 요소들 위에 위치하게 함 */
+	    z-index: 2;
+    	    /* 최대 너비를 800px로 설정하여 콘텐츠의 가로 길이를 제한 */
+	    max-width: 800px;
+    	    /* 좌우에 1rem의 패딩 추가 */
+	    padding: 0 1rem;
+	}
+
+       .hero h1 {
+	    /* 글자 크기를 2.5rem에서 4rem 사이로 설정, 뷰포트 너비에 따라 조정 */
+	    font-size: clamp(2.5rem, 5vw, 4rem);
+    	    /* 아래쪽 여백을 1rem으로 설정 */
+	    margin-bottom: 1rem;
+    	    /* 줄 높이를 1.2로 설정하여 텍스트 간격 조정 */
+	    line-height: 1.2;
+    	    /* 초기 투명도를 0으로 설정 (보이지 않음) */
+	    opacity: 0;
+    	    /* Y축으로 30px 아래로 이동 */
+	    transform: translateY(30px);
+    	    /* fadeInUp 애니메이션을 0.8초 동안 실행하고, 애니메이션 완료 후 상태 유지 */
+	    animation: fadeInUp 0.8s forwards;
+	}
+
+        .hero p {
+	    /* 글자 크기를 1.1rem에서 1.5rem 사이로 설정, 뷰포트 너비에 따라 조정 */
+	    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    	    /* 초기 투명도를 0으로 설정 (보이지 않음) */
+	    opacity: 0;
+    	    /* Y축으로 30px 아래로 이동 */
+	    transform: translateY(30px);
+    	    /* fadeInUp 애니메이션을 0.8초 동안 실행, 0.3초 지연 후 시작, 애니메이션 완료 후 상태 유지 */
+	    animation: fadeInUp 0.8s 0.3s forwards;
+	}
+
+        @keyframes fadeInUp {
+	    /* 애니메이션의 마지막 상태를 정의 */
+	    to {
+  	    /* 최종 투명도를 1로 설정 (완전히 보이게 함) */
+	    opacity: 1;
+            /* Y축 위치를 원래 위치로 되돌림 */
+	    transform: translateY(0);
+	    }
+	}
+
+        .cta-button {
+	    /* 인라인 블록으로 설정하여 너비와 높이를 조정 가능 */
+	    display: inline-block;
+    	    /* 상하 1rem, 좌우 2rem의 패딩 추가 */
+	    padding: 1rem 2rem;
+    	    /* 배경색을 CSS 변수 --white로 설정 */
+	    background: var(--white);
+    	    /* 텍스트 색상을 CSS 변수 --primary로 설정 */
+	    color: var(--primary);
+    	    /* 텍스트에 밑줄을 제거 */
+	    text-decoration: none;
+    	    /* 모서리를 5px로 둥글게 설정 */
+    	    border-radius: 5px;
+    	    /* 글자 두께를 500으로 설정 */
+	    font-weight: 500;
+    	    /* 모든 속성의 변화에 대해 0.3초의 전환 효과 추가 */
+	    transition: all 0.3s;
+    	    /* 위쪽 여백을 2rem으로 설정 */
+	    margin-top: 2rem;
+    	    /* 초기 투명도를 0으로 설정 (보이지 않음) */
+	    opacity: 0;
+    	    /* Y축으로 30px 아래로 이동 */
+	    transform: translateY(30px);
+    	    /* fadeInUp 애니메이션을 0.8초 동안 실행, 0.6초 지연 후 시작, 애니메이션 완료 후 상태 유지 */
+	    animation: fadeInUp 0.8s 0.6s forwards;
+	}
+
+
+        .cta-button:hover {
+	    /* 마우스 오버 시 Y축으로 3px 위로 이동 */
+	    transform: translateY(-3px);
+    	    /* 그림자를 추가하여 버튼에 깊이 효과를 줌 */
+	    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+	}
+
+	 /* 회사소개 섹션 */
+        .about-content {
+	    /* 최대 너비를 1000px로 설정하여 콘텐츠의 가로 길이를 제한 */
+	    max-width: 1000px;
+    	    /* 수평 중앙 정렬을 위해 마진을 자동으로 설정 */
+	    margin: 0 auto;
+    	    /* 상하 2rem, 좌우 2rem의 패딩 추가 */
+	    padding: 2rem;
+	}
+
+        .greeting {
+	    /* 배경색을 CSS 변수 --white로 설정 */
+	    background: var(--white);
+    	    /* 상하 3rem, 좌우 3rem의 패딩 추가 */
+	    padding: 3rem;
+    	    /* 모서리를 15px로 둥글게 설정 */
+	    border-radius: 15px;
+    	    /* 그림자를 추가하여 깊이 효과를 줌 */
+	    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    	    /* 아래쪽 여백을 3rem으로 설정 */
+	    margin-bottom: 3rem;
+	}
+
+        .greeting h3 {
+	    /* 텍스트 색상을 CSS 변수 --primary로 설정 */
+	    color: var(--primary);
+    	    /* 아래쪽 여백을 2rem으로 설정 */
+	    margin-bottom: 2rem;
+	    /* 글자 크기를 1.8rem으로 설정 */
+	    font-size: 1.8rem;
+	    /* 텍스트를 중앙 정렬 */
+	    text-align: center;
+	}
+
+        .greeting p {
+	    /* 아래쪽 여백을 1.5rem으로 설정 */
+	    margin-bottom: 1.5rem;
+    	    /* 줄 높이를 1.8로 설정하여 텍스트 간격을 조정 */
+	    line-height: 1.8;
+	}
+
+        .greeting blockquote {
+	    /* 글꼴 스타일을 이탤릭체로 설정 */
+	    font-style: italic;
+    	    /* 텍스트 색상을 CSS 변수 --primary로 설정 */
+	    color: var(--primary);
+    	    /* 위아래 여백을 2rem으로 설정 */
+	    margin: 2rem 0;
+    	    /* 내부 패딩을 1.5rem으로 설정 */
+	    padding: 1.5rem;
+    	    /* 왼쪽에 4px 두께의 선을 CSS 변수 --primary 색상으로 설정 */
+	    border-left: 4px solid var(--primary);
+    	    /* 배경색을 반투명 블루로 설정 */
+	    background: rgba(0, 102, 204, 0.05);
+    	    /* 글자 크기를 1.2rem으로 설정 */
+	    font-size: 1.2rem;
+    	    /* 텍스트를 중앙 정렬 */
+	    text-align: center;
+	}
+
+       .greeting .signature {
+	    /* 텍스트를 오른쪽 정렬 */
+	    text-align: right;
+    	    /* 위쪽 여백을 3rem으로 설정 */
+	    margin-top: 3rem;
+    	    /* 글자 두께를 500으로 설정 */
+	    font-weight: 500;
+	}
+
+        /* 사업영역 섹션 */
+        .section {
+	    /* 상하 8rem, 좌우 2rem의 패딩 추가 */
+	    padding: 8rem 2rem;
+    	    /* 요소의 위치를 상대적으로 설정하여 자식 요소의 절대 위치 설정 가능 */
+	    position: relative;
+	}
+
+       .section-title {
+	    /* 텍스트를 중앙 정렬 */
+	    text-align: center;
+    	    /* 아래쪽 여백을 4rem으로 설정 */
+	    margin-bottom: 4rem;
+	}
+
+        .section-title h2 {
+	    /* 글자 크기를 2.5rem으로 설정 */
+	    font-size: 2.5rem;
+    	    /* 텍스트 색상을 CSS 변수 --secondary로 설정 */
+	    color: var(--secondary);
+    	    /* 아래쪽 여백을 1rem으로 설정 */
+	    margin-bottom: 1rem;
+    	    /* 요소의 위치를 상대적으로 설정 */
+	    position: relative;
+    	    /* 요소를 인라인 블록으로 설정하여 너비를 내용에 맞춤 */
+	    display: inline-block;
+	}
+
+	.section-title h4 {
+	    /* 글자 크기를 2.5rem으로 설정 */
+	    font-size: 2.5rem;
+    	    /* 텍스트 색상을 CSS 변수 --yellow로 설정 */
+	    color: var(--yellow1);
+    	    /* 아래쪽 여백을 1rem으로 설정 */
+	    margin-bottom: 1rem;
+    	    /* 요소의 위치를 상대적으로 설정 */
+	    position: relative;
+    	    /* 요소를 인라인 블록으로 설정하여 너비를 내용에 맞춤 */
+	    display: inline-block;
+	}
+
+	.section-title h5 {
+	    /* 글자 크기를 2.5rem으로 설정 */
+	    font-size: 2.5rem;
+    	    /* 텍스트 색상을 CSS 변수 --accent로 설정 */
+	    color: var(--accent);
+    	    /* 아래쪽 여백을 1rem으로 설정 */
+	    margin-bottom: 1rem;
+    	    /* 요소의 위치를 상대적으로 설정 */
+	    position: relative;
+    	    /* 요소를 인라인 블록으로 설정하여 너비를 내용에 맞춤 */
+	    display: inline-block;
+	}
+
+
+        .section-title h2::after {
+	    /* 내용이 없는 가상 요소 생성 */
+	    content: '';
+    	    /* 절대 위치로 설정하여 부모 요소에 상대적으로 위치 지정 */
+	    position: absolute;
+    	    /* 부모 요소의 아래쪽에서 10px 떨어진 위치 */
+	    bottom: -10px;
+    	    /* 부모 요소의 중앙에 위치 */
+	    left: 50%;
+    	    /* X축으로 중앙 정렬 */
+	    transform: translateX(-50%);
+    	    /* 너비를 50px로 설정 */
+	    width: 50px;
+    	    /* 높이를 3px로 설정 */
+	    height: 3px;
+    	    /* 배경색을 CSS 변수 --primary로 설정 */
+	    background: var(--primary);
+	}
+
+        .services-grid {
+	    /* 그리드 레이아웃을 사용하여 자식 요소들을 배치 */
+	    display: grid;
+    	    /* 자동으로 열을 만들고, 최소 너비 300px, 최대 너비 1fr로 설정 */
+	   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    	   /* 그리드 아이템 간의 간격을 2rem으로 설정 */
+	   gap: 2rem;
+    	   /* 최대 너비를 1400px로 설정 */
+	   max-width: 1400px;
+    	   /* 수평 중앙 정렬 */
+	   margin: 0 auto;
+	}
+
+        .service-card {
+	    /* 배경색을 CSS 변수 --white로 설정 */
+	    background: var(--white);
+    	    /* 내부 패딩을 2rem으로 설정 */
+	    padding: 2rem;
+    	    /* 모서리를 15px로 둥글게 설정 */
+	    border-radius: 15px;
+    	    /* 그림자 효과를 추가하여 깊이감을 줌 */
+	    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    	    /* 모든 속성에 대해 0.3초의 전환 효과 적용 */
+	    transition: all 0.3s;
+    	    /* 요소의 위치를 상대적으로 설정 */
+	    position: relative;
+    	    /* 자식 요소가 부모 요소를 넘치지 않도록 설정 */
+	    overflow: hidden;
+	}
+
+        .service-card::before {
+	    /* 내용이 없는 가상 요소 생성 */
+	    content: '';
+    	    /* 절대 위치로 설정하여 부모 요소에 상대적으로 위치 지정 */
+	    position: absolute;
+    	    /* 부모 요소의 상단에 위치 */
+	    top: 0;
+    	    /* 부모 요소의 왼쪽에 위치 */
+	    left: 0;
+    	    /* 너비를 100%로 설정하여 부모 요소 전체를 차지 */
+	    width: 100%;
+    	    /* 높이를 200px로 설정 */
+	    height: 200px;
+    	    /* 배경 이미지를 전체 크기로 설정 */
+	    background-size: cover;
+    	    /* 배경 이미지를 중앙에 위치 */
+	    background-position: center;
+    	    /* 투명도를 0.8로 설정하여 반투명 효과 */
+	    opacity: 0.8;
+	}
+
+        .service-card:nth-child(1)::before {
+	    /* 첫번째 서비스 카드의 가상 요소에 배경 이미지 설정 */
+            background-image: url('images/coreait14.jpg');
+        }
+
+        .service-card:nth-child(2)::before {
+	    /* 두번째 서비스 카드의 가상 요소에 배경 이미지 설정 */
+            background-image: url('images/coreait19.jpg');
+        }
+
+        .service-card:nth-child(3)::before {
+	    /* 세번째 서비스 카드의 가상 요소에 배경 이미지 설정 */
+            background-image: url('images/coreait15.jpg');
+        }
+
+        .service-content {
+	    /* 위쪽 여백을 180px로 설정 */
+	    margin-top: 180px;
+    	    /* 요소의 위치를 상대적으로 설정 */
+	    position: relative;
+    	    /* z축에서의 쌓임 순서를 1로 설정하여 다른 요소 위에 표시 */
+	    z-index: 1;
+	}
+
+        .service-card:hover {
+    	    /* 마우스를 올렸을 때 요소를 Y축으로 10px 위로 이동 */
+            transform: translateY(-10px);
+        }
+
+        .service-card h3 {
+	    /* 텍스트 색상을 CSS 변수 --primary로 설정 */
+	    color: var(--primary);
+    	    /* 아래쪽 여백을 1rem으로 설정 */
+	    margin-bottom: 1rem;
+    	    /* 글자 크기를 1.5rem으로 설정 */
+	    font-size: 1.5rem;
+	}
+
+        /* 실적 섹션 */
+        .achievements {
+	    /* 배경색을 CSS 변수 --secondary로 설정 */
+	    background: var(--secondary);
+    	    /* 텍스트 색상을 CSS 변수 --white로 설정 */
+	    color: var(--white);
+    	    /* 요소의 위치를 상대적으로 설정 */
+	    position: relative;
+	}
+
+	.achievements::before {
+ 	   content: ''; /* 의사 요소의 내용 설정 (빈 문자열) */
+	    position: absolute; /* 절대 위치 지정 */
+	    top: 0; /* 상단 위치 */
+	    left: 0; /* 왼쪽 위치 */
+	    right: 0; /* 오른쪽 위치 */
+	    bottom: 0; /* 하단 위치 */
+	   background: url('images/coreait17.jpg') center/cover; /* 배경 이미지 설정, 중앙 정렬 및 크기 조정 */
+	   opacity: 0.1; /* 투명도 설정 (10%) */
+	}
+
+      .achievement-list {
+    	    max-width: 1200px;  /* 최대 너비: 1200픽셀 */
+            margin: 0 auto;     /* 상하 여백: 0, 좌우 여백: 자동으로 중앙 정렬 */
+	}
+
+      .achievement-item {
+	    background: rgba(30, 41, 59, 0.1);  /* 배경색: 흰색, 투명도 10% */
+	    padding: 2.5rem;    /* 내측 여백: 2.5rem */
+	    margin-bottom: 2rem; /* 하단 여백: 2rem */
+	    border-radius: 15px; /* 모서리 둥글기: 15픽셀 */
+	    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);  /* 그림자 효과 */
+	    transition: all 0.5s ease;  /* 모든 속성에 대해 0.5초 동안 부드럽게 전환 */
+	    position: relative;  /* 자식 요소의 절대 위치 지정 가능 */
+	    overflow: hidden;    /* 자식 요소가 경계를 넘지 않도록 숨김 */
+	}
+
+      .achievement-item::after {
+    	content: '';  /* 가상 요소의 내용은 비어 있음 */
+	    position: absolute;  /* 절대 위치 설정 */
+	    top: 0;              /* 상단 위치 0 */
+	    left: 0;             /* 좌측 위치 0 */
+	    width: 3px;         /* 너비: 3픽셀 */
+	    height: 0;          /* 초기 높이: 0 (애니메이션 효과를 위해) */
+	    background: #8B0000; /* 배경색: 다크 블루 (#8B0000) */
+	    transition: height 0.5s ease; /* 높이 변화에 대해 0.5초 동안 부드럽게 전환 */
+	}
+
+      .achievement-item:hover {
+	    transform: translateX(15px);  /* 마우스를 올렸을 때 요소를 오른쪽으로 15픽셀 이동 */
+	    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);  /* 그림자 효과를 더 강하게 설정 */
+	}
+
+      .achievement-item:hover::after {
+	    height: 100%;  /* 마우스를 올렸을 때 가상 요소의 높이를 100%로 설정 */
+	}
+
+        /* 보유기술 쇼케이스 */
+        .projects {
+	    /* 배경색을 CSS 변수 --white로 설정 */
+	    background: var(--white);
+	}
+
+        .project-slider {
+	    /* 최대 너비를 1400px로 설정 */
+	    max-width: 1400px;
+    	    /* 수평 중앙 정렬을 위해 여백을 자동으로 설정 */
+	    margin: 0 auto;
+    	    /* 상하 패딩을 2rem으로 설정 */
+	    padding: 2rem 0;
+	}
+
+        .project-slide {
+	    /* 요소의 위치를 상대적으로 설정 */
+	    position: relative;
+    	    /* 높이를 400px로 설정 */
+	    height: 400px;
+    	    /* 모서리를 15px로 둥글게 설정 */
+	    border-radius: 15px;
+    	    /* 자식 요소가 부모 요소를 넘치지 않도록 설정 */
+	    overflow: hidden;
+	}
+
+        .project-slide img {
+	    /* 너비를 100%로 설정하여 부모 요소의 너비에 맞춤 */
+	    width: 100%;
+    	    /* 높이를 100%로 설정하여 부모 요소의 높이에 맞춤 */
+	    height: 100%;
+    	    /* 이미지를 부모 요소에 맞게 잘라내고 비율 유지 */
+	    object-fit: cover;
+	}
+
+        .project-content {
+	    /* 절대 위치로 설정하여 부모 요소에 상대적으로 위치 지정 */
+	    position: absolute;
+    	    /* 하단에 위치 */
+	    bottom: 0;
+    	    /* 왼쪽에 위치 */
+	    left: 0;
+    	    /* 오른쪽에 위치 */
+	    right: 0;
+    	    /* 상하 패딩을 2rem으로 설정 */
+	    padding: 2rem;
+    	    /* 투명도에서 검은색으로의 그라데이션 배경 설정 */
+	    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    	    /* 텍스트 색상을 CSS 변수 --white로 설정 */
+	    color: var(--white);
+	}
+
+
+        /* 연락처 섹션 */
+       .contact {
+	    /* 배경색을 CSS 변수 --secondary로 설정 */
+	    background: var(--secondary);
+    	    /* 텍스트 색상을 CSS 변수 --white로 설정 */
+	    color: var(--white);
+    	    /* 요소의 위치를 상대적으로 설정 */
+	    position: relative;
+	}
+
+        .contact::before {
+	    content: ''; /* 의사 요소의 내용 설정 (빈 문자열) */
+	    position: absolute; /* 절대 위치 지정 */
+	    top: 0; /* 상단 위치 */
+	    left: 0; /* 왼쪽 위치 */
+	    right: 0; /* 오른쪽 위치 */
+	    bottom: 0; /* 하단 위치 */
+	   background: url('images/coreait04.jpg') center/cover; /* 배경 이미지 설정, 중앙 정렬 및 크기 조정 */
+	   opacity: 0.1; /* 투명도 설정 (10%) */
+	}
+
+        .contact-grid {
+	    display: grid; /* 그리드 레이아웃을 사용 */
+	    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 자동으로 맞춰지는 열 구성 */
+	    gap: 3rem; /* 그리드 항목 간의 간격 설정 */
+	    max-width: 1400px; /* 최대 너비 설정 */
+	    margin: 0 auto; /* 수평 중앙 정렬 */
+	    position: relative; /* 상대 위치 지정 */
+	}
+
+       .contact-card {
+	    text-align: center; /* 텍스트를 중앙 정렬 */
+	    padding: 2rem; /* 내부 여백 설정 */
+	    background: rgba(255, 255, 255, 0.1); /* 반투명 배경색 설정 */
+	    border-radius: 15px; /* 모서리를 둥글게 설정 */
+	    backdrop-filter: blur(10px); /* 배경 흐림 효과 적용 */
+	    transition: all 0.3s; /* 모든 속성에 대해 0.3초의 전환 효과 적용 */
+	}
+
+	.contact-line {
+	    font-size: 2.5rem; /* 글자 크기 설정 */
+	    font-weight: 500; /* 글자 두께 설정 (볼드) */
+	    color: var(--yellow1); /* 색상 설정 (CSS 변수 사용) */
+	    margin-bottom: 1rem; /* 하단 여백 설정 */
+	    position: relative; /* 상대 위치 지정 */
+	    display: inline-block; /* 인라인 블록 요소로 설정 */
+	}
+
+       .contact-card:hover {
+  	  transform: translateY(-5px); /* 카드가 위로 5px 이동 */
+	  background: rgba(255, 255, 255, 0.15); /* 반투명 배경색을 15%로 변경 */
+	}
+      
+        /* 모바일 메뉴 */
+        .mobile-menu-btn {
+	    /* 기본적으로 요소를 숨김 (디스플레이 없음) */
+	    display: none;
+    	    /* 플렉스 방향을 세로로 설정 */
+	    flex-direction: column;
+    	    /* 아이템 간의 간격을 6px로 설정 */
+	    gap: 6px;
+    	    /* 커서를 포인터로 설정하여 클릭 가능함을 나타냄 */
+	    cursor: pointer;
+    	    /* 다른 요소들 위에 표시되도록 z-index를 1001로 설정 */
+	    z-index: 1001;
+	}
+
+        .mobile-menu-btn span {
+	    /* 너비를 30px로 설정 */
+	    width: 30px;
+    	    /* 높이를 2px로 설정 */
+	    height: 2px;
+    	    /* 배경색을 CSS 변수 --text로 설정 */
+	    background: var(--text);
+    	    /* 배경 색상 변화에 대한 전환 효과를 0.3초로 설정 */
+	    transition: 0.3s;
+	}
+
+        @media (max-width: 768px) {
+    	/* 모바일 메뉴 버튼을 플렉스 박스로 표시 */
+	    .mobile-menu-btn {
+        	display: flex;
+    	}
+
+	    /* 내비게이션 링크의 고정 위치 설정 */
+	    .nav-links {
+        	position: fixed; /* 화면에 고정 */
+	        top: 0; /* 상단에 위치 */
+	        left: 0; /* 왼쪽에 위치 */
+        	right: 0; /* 오른쪽에 위치 */
+	        bottom: 0; /* 하단에 위치 */
+        	background: rgba(255, 255, 255, 0.98); /* 반투명 흰색 배경 */
+	        padding: 6rem 2rem; /* 상하 6rem, 좌우 2rem 패딩 */
+        	flex-direction: column; /* 세로 방향으로 배치 */
+	        justify-content: flex-start; /* 시작 부분에 정렬 */
+	        transform: translateX(100%); /* 오른쪽으로 이동하여 숨김 */
+        	transition: transform 0.3s ease; /* 변환 애니메이션 설정 */
+	    }
+
+	    /* 내비게이션 링크가 활성화되었을 때의 변환 */
+	    .nav-links.active {
+        	transform: translateX(0); /* 제자리로 이동 */
+	    }
+
+	    /* 모바일 메뉴 버튼의 첫 번째 스팬이 활성화되었을 때 변환 */
+	    .mobile-menu-btn.active span:nth-child(1) {
+        	transform: rotate(45deg) translate(8px, 8px); /* 회전 및 이동 */
+	    }
+
+	    /* 모바일 메뉴 버튼의 두 번째 스팬이 활성화되었을 때 투명도 설정 */
+	    .mobile-menu-btn.active span:nth-child(2) {
+        	opacity: 0; /* 완전 투명 */
+	    }
+
+	    /* 모바일 메뉴 버튼의 세 번째 스팬이 활성화되었을 때 변환 */
+	    .mobile-menu-btn.active span:nth-child(3) {
+        	transform: rotate(-45deg) translate(7px, -7px); /* 회전 및 이동 */
+	    }
+	}
+
+        /* 애니메이션 */
+        @keyframes float {
+	    /* 애니메이션 시작 상태: 원래 위치 */
+            0% { transform: translateY(0px); }
+	    /* 애니메이션 중간 상태: 위로 20px 이동 */
+            50% { transform: translateY(-20px); }
+	    /* 애니메이션 종료 상태: 원래 위치로 돌아옴 */
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+	    /* float 애니메이션을 6초 동안 ease-in-out 효과로 무한 반복 */
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <!-- 로고 링크 -->
+            <a href="#" class="logo">
+                <!-- SVG 아이콘 -->
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="15" y1="9" x2="15" y2="9"/>
+                </svg>
+                <!-- 이미지 로고 -->
+		<img src="images/coreait00.png" style="width: 250px; height: auto;">
+            </a>
+            <!-- 모바일 메뉴 버튼 -->
+            <div class="mobile-menu-btn">
+                <span></span><!-- 첫번째 햄버거 메뉴 아이콘 -->
+                <span></span><!-- 두번째 햄버거 메뉴 아이콘 -->
+                <span></span><!-- 세번째 햄버거 메뉴 아이콘 -->
+            </div>
+            <!-- 내비게이션 링크들 -->
+            <div class="nav-links">
+                <a href="#about">회사소개</a>
+                <a href="#services">사업영역</a>
+                <a href="#projects">보유기술</a>
+                <a href="#achievements">주요실적</a>
+                <a href="#contact">문의하기</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="hero">
+	<!-- 스와이프 슬라이더 시작 -->
+        <div class="swiper hero-slider">
+            <div class="swiper-wrapper">
+	        <!-- 첫 번째 슬라이드 -->
+                <div class="hero-slide swiper-slide" style="background: url('images/coreait01.jpg') center/cover;">
+                    <div class="hero-content">
+                        <h1>기록은 과거의 거울이자</h1>
+                        <h1>미래의 길잡이입니다!!!</h1>
+                        <p>한장한장의 기록물을 소중히 다루는 신뢰받는 기업</p>
+                        <a href="#contact" class="cta-button">문의하기</a>
+                    </div>
+                </div>
+                <!-- 두 번째 슬라이드 -->
+                <div class="hero-slide swiper-slide" style="background: url('images/coreait07.jpg') center/cover;">
+                    <div class="hero-content">
+                        <h1>고객의 비즈니스 성공을 위한 최적의 솔루션을 제공합니다</h1>
+                        <p>최고의 사업수행 조직과</p>
+                        <p>최첨단 장비 및 기술로</p>
+                        <p>최고의 품질을 보장하겠습니다!!!</p>
+                        <a href="#services" class="cta-button">보유기술 보기</a>
+                    </div>
+                </div>
+                <!-- 세 번째 슬라이드 -->
+                <div class="hero-slide swiper-slide" style="background: url('images/coreait16.jpg') center/cover;">
+                    <div class="hero-content">
+                        <h1>신뢰할 수 있는 파트너로서의 경험과 전문성</h1>
+                         <a href="#projects" class="cta-button">주요사업 실적</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 스와이프 페이지네이션 -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+    <section id="about" class="section">
+        <div class="section-title" data-aos="fade-up">
+            <h2>회사소개</h2>
+	    <p style="font-size: 25px;">고객의 소중한 기록물관리에 최선을 다하는 기록물 디지털화 전문기업</p>
+        </div>
+        <div class="about-content" data-aos="fade-up">
+            <div class="greeting">
+                <h3 style="font-size: 40px;">CEO 인사말</h3>
+                <p style="font-size: 25px;">안녕하십니까?<br>
+                <p style="font-size: 25px;">대한민국 기록물 디지털화의 새로운 역사를 만들어가는 (주)고려정보기술입니다.</p>
+                
+                <blockquote>
+                    "기록은 과거와 미래를 잇는 가교이며, 문명의 기초가 됩니다"
+                </blockquote>
+
+                <p>저희 (주)고려정보기술은 국내 기록물 디지털화 분야를 선도해나아갈 기록물 디지털화 전문기업입니다.</P> 
+                <p>평균 10년 이상의 실무 경험을 보유한 프로젝트 관리자들과</p>
+                <p>각 분야별 전문가들이 모여 고객님의 소중한 기록물을 디지털화하고 있습니다.</p>
+                
+                <p>이러한 신념으로 최첨단 디지털화 장비와 체계적인 품질관리 시스템을 기반으로,</p>
+                <p>분야별 특화된 솔루션과 차별화된 검증 프로세스를 통해</p>
+                <p>기록물 디지털화의 새로운 표준을 제시하고 있습니다.</p>
+                <p>특히 기록물 연구전담부서를 중심으로 한 혁신적인 IT 기술과</p>
+                <p>철저한 보안 정책으로 안전하고 체계적인 기록물 관련 사업을 제공하고 있습니다.</p>
+
+                <blockquote>
+                    "오늘의 기록이 내일의 역사가 됩니다"
+                </blockquote>
+
+                <p>이 말처럼 앞으로도 (주)고려정보기술은 변함없는 전문성과 신뢰성으로</p>
+                <p>고객님의 소중한 기록물이 활용에 용이하고 안전하게 관리가 될수 있도록 ,</p>
+                <p>대한민국 기록물 관리의 미래를 이끌어 나가겠습니다.</p>
+                
+                <div class="signature">
+                    (주)고려정보기술 임직원 일동
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="section-title" data-aos="fade-up">
+            <h2>사업영역</h2>
+	    <p style="font-size: 25px;">고객의 비즈니스 성공을 위한 최적의 솔루션을 제공합니다</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card" data-aos="fade-up">
+                <div class="service-content">
+                    <h3>기록물 디지털화 사업</h3>
+                    <h3>기록물 전수조사 사업</h3>
+                    <p>체계적이며 안전한 기록물 관리시스템과 최첨단 장비를 활용한 고품질 디지털화 서비스를 제공합니다!!!</p>
+                    <br>
+                    <ul>
+                        <li>중요종이기록물 디지털화</li>
+                        <li>시청각기록물 디지털화</li>
+                        <li>건축물카드대장 디지털화</li>
+                        <li>생활기록부 디지털화</li>
+                        <li>인사기록카드 디지털화</li>
+                        <li>기록물 전수조사</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-content">
+                    <h3>소프트웨어 개발</h3>
+                    <br>
+                    <br>
+                    <p>고객의 요구사항에 맞는 맞춤형 소프트웨어를 개발하여 비즈니스 경쟁력을 향상시킵니다.</p>
+                    <br>
+                    <ul>
+                        <li>기록물구축 공정관리 시스템 개발</li>
+                        <li>시청각기록물 시스템 개발</li>
+                        <li>이미지 보정 프로그램 개발</li>
+                        <li>서고관리시스템 개발</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-content">
+                    <h3>IT 컨설팅</h3>
+                    <br>
+                    <br>
+                    <p>전문적인 IT 컨설팅을 통해 기업의 디지털 전환을 성공적으로 이끌어냅니다.</p>
+                    <br>
+                    <ul>
+                        <li>기록물 디지털 전환 전략</li>
+                        <li>효율적인 기록물관리 방안</li>
+                        <li>정보 보안 컨설팅</li>
+                        <li>IT 인프라 최적화</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section projects">
+        <div class="section-title" data-aos="fade-up">
+            <h2>보유기술</h2>
+	    <p style="font-size: 25px;">다양하고 풍부한 사업경력 보유자를 통한</p>
+	    <p style="font-size: 25px;">수행조직구성과 최첨단 장비 및 보유기술로</p>
+	    <p style="font-size: 25px;">성공적인 사업수행과 고품질의 데이터를 보장합니다!!!</p>
+        </div>
+        <div class="swiper project-slider" data-aos="fade-up">
+            <div class="swiper-wrapper">
+                <div class="project-slide swiper-slide">
+                    <img src="images/coreait06.jpg" alt="프로젝트 1">
+                    <div class="project-content">
+			<h3 class="highlight">10년이상의 풍부한 기록물 관련</h3>
+			<h3 class="highlight">사업수행 경력자 및 관련 자격증 다수 보유</h3>
+                    </div>
+                </div>
+                <div class="project-slide swiper-slide">
+                    <img src="images/coreait22.jpg" alt="프로젝트 2">
+                    <div class="project-content">
+			<h3 class="highlight">기록물 사업에 특화된 최신장비 보유</h3>
+                        <p>일반문서 고속스캐너, 도면문서 스캐너 등</p>
+                    </div>
+                </div>
+                <div class="project-slide swiper-slide">
+                    <img src="images/coreait21.jpg" alt="프로젝트 3">
+                    <div class="project-content">
+			<h3 class="highlight">기록물 디지털화 사업에</h3> 
+			<h3 class="highlight">최적화된 검증된 시스템 보유</h3>
+                        <p>기록물구축 공정관리프로그램, 이미지보정 프로그램,</p>
+                        <p>기록물 검색운영프로그램 등</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+    <section class="achievements" id="achievements">
+        <div class="section-title" data-aos="fade-up">
+            <h5>주요실적</h5>
+	    <p style="font-size: 25px;">저희 (주)고려정보기술이 만들어온 성과입니다</p>
+        </div>
+        <section class="achievements" id="achievements">
+        <div class="achievement-list">
+          <div class="achievement-item" data-aos="fade-up" data-aos-delay="100">
+              <h3 class="highlight" style="font-size: 25px;">제주특별자치도 제주시</h3>
+	      <p style="font-size: 20px;">2024년 중요종이기록물 DB구축 사업 완료(2024년 04월 ~ 2024년 10월)</p>
+          </div>
+          <div class="achievement-item" data-aos="fade-up" data-aos-delay="200">
+              <h3 class="highlight" style="font-size: 25px;">제주특별자치도</h3>
+	    <p style="font-size: 20px;">제주특별자치도청 사진필름류 디지털화 사업(2024년 06월 ~ 2024년 12월)</p>
+          </div>
+    </section>
+
+    <section id="contact" class="section contact">
+        <div class="section-title" data-aos="fade-up">
+            <h5>문의하기</h5>
+	    <p style="font-size: 25px;">언제든지 기록물 관련 컨설팅 및 전산화 등 관련업무에 대한 문의사항을 환영합니다</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="contact-line" data-count="본사주소">본사주소</div>
+		<p class="left-align">위 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;치 : 제주특별자치도</p>
+                <p class="left-align">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;제주시 무근성7길 27, 202호(삼도파크빌)</p>
+		<p class="left-align">홈페이지 : http://www.coreait.co.kr</p>
+            </div>
+            <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="contact-line" data-count="연락처">연락처</div>
+                <p class="left-align">전화: 064-721-6014</p>
+		<p class="left-align">팩스: 050-4175-0206</p>
+            </div>
+            <div class="contact-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="contact-line" data-count="메일주소">메일주소</div>
+                <p class="left-align">이메일: sjs9431@hanmail.net</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 (주)고려정보기술. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // AOS 초기화
+        AOS.init({
+	    duration: 1000,  // 애니메이션 지속 시간 (밀리초)
+	    once: true,      // 스크롤 시 한 번만 애니메이션 실행
+	    offset: 100      // 애니메이션 시작 오프셋 (픽셀)
+	});
+
+        // 히어로 슬라이더
+        new Swiper('.hero-slider', {
+	    effect: 'fade',  // 슬라이드 전환 효과: 페이드
+	    autoplay: {
+        	delay: 5000,  // 자동 재생 지연 시간 (밀리초)
+	        disableOnInteraction: false,  // 사용자 상호작용 후에도 자동 재생 유지
+	    },
+	    pagination: {
+        	el: '.swiper-pagination',  // 페이지네이션 요소 선택자
+	        clickable: true  // 페이지네이션 클릭 가능 여부
+	    }
+	});
+
+        // 프로젝트 슬라이더
+        new Swiper('.project-slider', {
+	    slidesPerView: 1,  // 한 번에 보여줄 슬라이드 수
+	    spaceBetween: 30,   // 슬라이드 간의 간격 (픽셀)
+	    loop: true,         // 슬라이드가 끝나면 처음으로 돌아가는지 여부
+	    pagination: {
+        	el: '.swiper-pagination',  // 페이지네이션 요소 선택자
+	        clickable: true            // 페이지네이션 클릭 가능 여부
+	    },
+	    navigation: {
+        	nextEl: '.swiper-button-next',  // 다음 슬라이드 버튼 선택자
+	        prevEl: '.swiper-button-prev',  // 이전 슬라이드 버튼 선택자
+	    },
+	    breakpoints: {
+        	768: {
+	            slidesPerView: 2,  // 화면 너비가 768px 이상일 때 보여줄 슬라이드 수
+        	},
+	        1024: {
+        	    slidesPerView: 3,  // 화면 너비가 1024px 이상일 때 보여줄 슬라이드 수
+	        }
+	    }
+	});
+
+        // 숫자 카운터 애니메이션 함수
+	const animateNumber = (element) => {
+	    const target = parseInt(element.dataset.count);  // 목표 숫자 (HTML 데이터 속성에서 가져옴)
+	    const duration = 2000;  // 애니메이션 지속 시간 (밀리초)
+	    const step = target / duration * 10;  // 한 단계에서 증가할 숫자 계산
+	    let current = 0;  // 현재 숫자 초기화
+
+        // 10ms마다 실행되는 타이머 설정
+	const timer = setInterval(() => {
+        	current += step;  // 현재 숫자 업데이트
+	        if (current >= target) {
+        	    element.textContent = target;  // 목표 숫자에 도달하면 텍스트 업데이트
+	            clearInterval(timer);  // 타이머 종료
+        	} else {
+	            element.textContent = Math.floor(current);  // 현재 숫자를 정수로 표시
+        	}
+	    }, 10);
+	};
+
+
+        // Intersection Observer로 숫자 애니메이션 트리거
+	const observer = new IntersectionObserver((entries) => {
+	    entries.forEach(entry => {
+        	if (entry.isIntersecting) {  // 요소가 뷰포트에 들어오면
+	            const numbers = entry.target.querySelectorAll('.achievement-number');  // 숫자 요소 선택
+        	    numbers.forEach(animateNumber);  // 각 숫자 요소에 애니메이션 적용
+	            observer.unobserve(entry.target);  // 애니메이션이 실행된 요소는 더 이상 관찰하지 않음
+        	}
+	    });
+	});
+
+	// '.achievement-grid' 요소를 관찰 시작
+	observer.observe(document.querySelector('.achievement-grid'));
+
+
+        // 모바일 메뉴 기능
+	const mobileMenuBtn = document.querySelector('.mobile-menu-btn');  // 모바일 메뉴 버튼 선택
+	const navLinks = document.querySelector('.nav-links');  // 네비게이션 링크 선택
+
+	// 모바일 메뉴 버튼 클릭 이벤트 리스너 추가
+	mobileMenuBtn.addEventListener('click', () => {
+	    mobileMenuBtn.classList.toggle('active');  // 버튼에 'active' 클래스 토글
+	    navLinks.classList.toggle('active');  // 네비게이션 링크에 'active' 클래스 토글
+	});
+
+        // 스크롤 이벤트로 헤더 스타일 변경
+	window.addEventListener('scroll', () => {
+	    const header = document.querySelector('.header');  // 헤더 요소 선택
+	    if (window.scrollY > 100) {  // 스크롤 위치가 100픽셀을 초과하면
+        	header.classList.add('scrolled');  // 'scrolled' 클래스 추가
+	    } else {
+        	header.classList.remove('scrolled');  // 그렇지 않으면 'scrolled' 클래스 제거
+	    }
+	});
+    </script>
+</body>
+</html>
