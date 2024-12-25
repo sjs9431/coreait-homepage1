@@ -725,12 +725,12 @@
 
         @media (max-width: 768px) {
     	/* 모바일 메뉴 버튼을 플렉스 박스로 표시 */
-	    .mobile-menu-btn {
+	.mobile-menu-btn {
         	display: flex;
     	}
 
-	    /* 내비게이션 링크의 고정 위치 설정 */
-	    .nav-links {
+	/* 내비게이션 링크의 고정 위치 설정 */
+	.nav-links {
         	position: fixed; /* 화면에 고정 */
 	        top: 0; /* 상단에 위치 */
 	        left: 0; /* 왼쪽에 위치 */
@@ -742,28 +742,27 @@
 	        justify-content: flex-start; /* 시작 부분에 정렬 */
 	        transform: translateX(100%); /* 오른쪽으로 이동하여 숨김 */
         	transition: transform 0.3s ease; /* 변환 애니메이션 설정 */
-	    }
+	 }
 
-	    /* 내비게이션 링크가 활성화되었을 때의 변환 */
+	 /* 내비게이션 링크가 활성화되었을 때의 변환 */
 	    .nav-links.active {
         	transform: translateX(0); /* 제자리로 이동 */
 	    }
 
-	    /* 모바일 메뉴 버튼의 첫 번째 스팬이 활성화되었을 때 변환 */
-	    .mobile-menu-btn.active span:nth-child(1) {
+	/* 모바일 메뉴 버튼의 첫 번째 스팬이 활성화되었을 때 변환 */
+	.mobile-menu-btn.active span:nth-child(1) {
         	transform: rotate(45deg) translate(8px, 8px); /* 회전 및 이동 */
-	    }
+	 }
 
-	    /* 모바일 메뉴 버튼의 두 번째 스팬이 활성화되었을 때 투명도 설정 */
-	    .mobile-menu-btn.active span:nth-child(2) {
+	 /* 모바일 메뉴 버튼의 두 번째 스팬이 활성화되었을 때 투명도 설정 */
+	 .mobile-menu-btn.active span:nth-child(2) {
         	opacity: 0; /* 완전 투명 */
-	    }
+	 }
 
-	    /* 모바일 메뉴 버튼의 세 번째 스팬이 활성화되었을 때 변환 */
-	    .mobile-menu-btn.active span:nth-child(3) {
+	  /* 모바일 메뉴 버튼의 세 번째 스팬이 활성화되었을 때 변환 */
+	  .mobile-menu-btn.active span:nth-child(3) {
         	transform: rotate(-45deg) translate(7px, -7px); /* 회전 및 이동 */
-	    }
-	}
+	  }
 
         /* 애니메이션 */
         @keyframes float {
@@ -993,7 +992,7 @@
           </div>
           <div class="achievement-item" data-aos="fade-up" data-aos-delay="200">
               <h3 class="highlight" style="font-size: 25px;">제주특별자치도</h3>
-	    <p style="font-size: 20px;">제주특별자치도청 사진필름류 디지털화 사업(2024년 06월 ~ 2024년 12월)</p>
+	    <p style="font-size: 20px;">2024년도 사진필름 디지털 변환(2024년 06월 ~ 2024년 12월)</p>
           </div>
     </section>
 
