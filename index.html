@@ -5,7 +5,7 @@
 
     <title>(주)고려정보기술</title>    
 
-    <meta itemprop="name" content="Example"/> <!-- 웹사이트 이름 -->
+    <meta itemprop="name" content="(주)고려정보기술"/> <!-- 웹사이트 이름 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="Vnu-gRqd4C1-a_jpRp_k1xNYFTFHAz4mRhBY6ukmWfI" /> /* 구글 소유권 */
     <meta name="naver-site-verification" content="83d4ab096c04f2ca67099e3f5791dbb423e1047a" /> /* 네이버 소유권 */
@@ -15,6 +15,8 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    /> /* 마우스 비활성화 */
     <script>
       document.addEventListener('contextmenu', function(e) {
         e.preventDefault();
@@ -753,22 +755,23 @@
         	transform: translateX(0); /* 제자리로 이동 */
 	    }
 
-	/* 모바일 메뉴 버튼의 첫 번째 스팬이 활성화되었을 때 변환 */
-	.mobile-menu-btn.active span:nth-child(1) {
+	 /* 모바일 메뉴 버튼의 첫 번째 스팬이 활성화되었을 때 변환 */
+	    .mobile-menu-btn.active span:nth-child(1) {
         	transform: rotate(45deg) translate(8px, 8px); /* 회전 및 이동 */
-	 }
+	    }
 
-	 /* 모바일 메뉴 버튼의 두 번째 스팬이 활성화되었을 때 투명도 설정 */
-	 .mobile-menu-btn.active span:nth-child(2) {
+	    /* 모바일 메뉴 버튼의 두 번째 스팬이 활성화되었을 때 투명도 설정 */
+	    .mobile-menu-btn.active span:nth-child(2) {
         	opacity: 0; /* 완전 투명 */
-	 }
+	    }
 
-	  /* 모바일 메뉴 버튼의 세 번째 스팬이 활성화되었을 때 변환 */
-	  .mobile-menu-btn.active span:nth-child(3) {
+	    /* 모바일 메뉴 버튼의 세 번째 스팬이 활성화되었을 때 변환 */
+	    .mobile-menu-btn.active span:nth-child(3) {
         	transform: rotate(-45deg) translate(7px, -7px); /* 회전 및 이동 */
-	  }
+	    }
+	}
 
-        /* 애니메이션 */
+	 /* 애니메이션 */
         @keyframes float {
 	    /* 애니메이션 시작 상태: 원래 위치 */
             0% { transform: translateY(0px); }
@@ -1072,37 +1075,7 @@
 	    }
 	});
 
-        // 숫자 카운터 애니메이션 함수
-	const animateNumber = (element) => {
-	    const target = parseInt(element.dataset.count);  // 목표 숫자 (HTML 데이터 속성에서 가져옴)
-	    const duration = 2000;  // 애니메이션 지속 시간 (밀리초)
-	    const step = target / duration * 10;  // 한 단계에서 증가할 숫자 계산
-	    let current = 0;  // 현재 숫자 초기화
-
-        // 10ms마다 실행되는 타이머 설정
-	const timer = setInterval(() => {
-        	current += step;  // 현재 숫자 업데이트
-	        if (current >= target) {
-        	    element.textContent = target;  // 목표 숫자에 도달하면 텍스트 업데이트
-	            clearInterval(timer);  // 타이머 종료
-        	} else {
-	            element.textContent = Math.floor(current);  // 현재 숫자를 정수로 표시
-        	}
-	    }, 10);
-	};
-
-
-        // Intersection Observer로 숫자 애니메이션 트리거
-	const observer = new IntersectionObserver((entries) => {
-	    entries.forEach(entry => {
-        	if (entry.isIntersecting) {  // 요소가 뷰포트에 들어오면
-	            const numbers = entry.target.querySelectorAll('.achievement-number');  // 숫자 요소 선택
-        	    numbers.forEach(animateNumber);  // 각 숫자 요소에 애니메이션 적용
-	            observer.unobserve(entry.target);  // 애니메이션이 실행된 요소는 더 이상 관찰하지 않음
-        	}
-	    });
-	});
-
+        
 	// '.achievement-grid' 요소를 관찰 시작
 	observer.observe(document.querySelector('.achievement-grid'));
 
