@@ -5,11 +5,10 @@
 
     <title>(주)고려정보기술</title>    
 
-    <meta name="name" content="(주)고려정보기술"/> <!-- 웹사이트 이름 -->
+    <meta itemprop="name" content="(주)고려정보기술"/> <!-- 웹사이트 이름 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="Vnu-gRqd4C1-a_jpRp_k1xNYFTFHAz4mRhBY6ukmWfI" /> /* 구글 소유권 */
-    <meta name="naver-site-verification" content="83d4ab096c04f2ca67099e3f5791dbb423e1047a" /> /* 네이버 소유권 */
-
+    <meta name="google-site-verification" content="Vnu-gRqd4C1-a_jpRp_k1xNYFTFHAz4mRhBY6ukmWfI" /> 
+    <meta name="naver-site-verification" content="83d4ab096c04f2ca67099e3f5791dbb423e1047a" /> 
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -171,6 +170,51 @@
 	    /* 링크에 마우스를 올렸을 때 가상의 요소의 너비를 100%로 설정 */
 	    width: 100%;
 	}
+
+        /* 교육영상 섹션 */
+
+	#learnList {
+	  display: none; /* 기본적으로 숨김 */
+	}
+
+	.hidden {
+	  display: none; /* 숨김 상태 */
+	}
+
+	.visible {
+	  display: block; /* 표시 상태 */
+	}
+
+	.learnList-item {
+            margin-right: 20px;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .clickable {
+            color: blue;                /* 글자 색상을 파란색으로 설정 */
+            cursor: pointer;           /* 마우스 커서를 포인터로 변경하여 클릭 가능하다는 것을 나타냄 */
+            display: flex;             /* 플렉스 박스 사용 */
+            align-items: center;       /* 수직 중앙 정렬 */
+        }
+
+        .thumbnail {
+            width: 200px; /* 섬네일 너비 설정 */
+            height: 200px; /* 섬네일 높이 설정 */
+            cursor: pointer; /* 커서 포인터 설정 */
+            margin-right: 20px; /* 오른쪽 여백 추가 */
+        }
+
+        .learn-box {
+            padding: 10px; /* 패딩 추가 */
+            border: 1px solid #ccc; /* 테두리 추가 */
+            border-radius: 5px; /* 모서리 둥글게 */
+            background-color: #f9f9f9; /* 배경색 설정 */
+            height: 180px; /* 섬네일 높이에 맞추기 위해 고정 높이 설정 */
+            width: 1200px; /* 섬네일 너비 설정 */
+            display: flex; /* 플렉스 박스 사용 */
+            align-items: center; /* 수직 중앙 정렬 */
+        }
 
         /* 히어로 섹션 */
        .hero {
@@ -787,7 +831,6 @@
         }
     </style>
 </head>
-
 <body>
     <header class="header">
         <nav class="nav">
@@ -811,8 +854,8 @@
                 <a href="#about">회사소개</a>
                 <a href="#services">사업영역</a>
                 <a href="#projects">보유기술</a>
-                <a href="#learn">교육영상</a>
-                <a href="#achievements">주요실적</a>
+		<a href="#learnList" id="learnVideo">교육영상</a>
+ 	        <a href="#achievements">주요실적</a>
                 <a href="#contact">문의하기</a>
             </div>
         </nav>
@@ -1076,7 +1119,157 @@
 	    }
 	});
 
-        
+	document.getElementById('learnVideo').addEventListener('click', function(e) {
+	    e.preventDefault(); // 기본 링크 동작 방지
+
+	    // 새로운 빈 페이지 열기
+	    const newWindow = window.open('', '_blank');
+
+   	    // 새로운 페이지에 내용 추가
+	    newWindow.document.write(`
+	        <html>
+	        <head>
+        	    <title>교육영상 목록</title>
+	            <style>
+        	        body { 
+			    font-family: Arial, sans-serif; /* 기본 글꼴 설정 */
+			    padding: 20px; /* 페이지 여백 설정 */
+			}
+
+			h1 { 
+			    color: #333; /* 제목 색상 설정 */
+			}
+
+			ul { 
+			    list-style-type: none; /* 리스트의 기본 점 제거 */
+			    padding: 0; /* 리스트 패딩 제거 */
+			}
+
+			li { 
+			    margin: 20px 0; /* 리스트 항목 간의 간격 설정 */
+			}
+
+			.video-box {
+			    display: flex; /* 플렉스 박스 레이아웃 사용 */
+			    align-items: center; /* 세로 정렬을 중앙으로 설정 */
+			    border: 2px solid #ccc; /* 테두리 스타일 설정 */
+			    padding: 10px; /* 내부 여백 설정 */
+			    border-radius: 5px; /* 모서리 둥글게 설정 */
+			    cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+			    transition: background-color 0.3s; /* 배경색 변화에 애니메이션 추가 */
+			}
+
+			.video-box:hover {
+			    background-color: #f0f0f0; /* 마우스를 올렸을 때 배경색 변경 */
+			}
+
+			img { 
+			    width: 80px; /* 섬네일 이미지 너비 설정 */
+			    height: auto; /* 높이는 자동으로 설정 (비율 유지) */
+			    margin-right: 10px; /* 이미지와 텍스트 간의 간격 설정 */
+			}
+	            </style>
+        	</head>
+	        <body>
+        	    <h1>교육영상 목록</h1>
+			<ul>
+			    <li>
+			        <div class="video-box" onclick="window.open('https://youtu.be/iCntM1dqbKs', '_blank')">
+			            <img src="https://img.youtube.com/vi/iCntM1dqbKs/0.jpg" alt="국가기록원 홍보영상">
+			            국가기록원 홍보영상(출처 : 국가기록원)
+			        </div>
+			    </li>
+			    <li>
+			        <div class="video-box" onclick="window.open('https://youtu.be/fPpVRnhw6sM?t=156', '_blank')">
+			            <img src="https://img.youtube.com/vi/fPpVRnhw6sM/0.jpg" alt="기록물 구축 절차">
+			            기록물 구축 절차 참고자료-국가기록원 시설 견현 교육(출처 : 국가기록원)
+			        </div>
+			    </li>
+			    <li>
+			        <div class="video-box" onclick="window.open('https://youtu.be/Cqy80Pq0yjI', '_blank')">
+			            <img src="https://img.youtube.com/vi/Cqy80Pq0yjI/0.jpg" alt="기록물 관리">
+			            기록물 관리 요령
+			        </div>
+			    </li>
+			    <li>
+			        <div class="video-box" onclick="window.open('https://youtu.be/YF_-fpk5trQ', '_blank')">
+			            <img src="https://img.youtube.com/vi/YF_-fpk5trQ/0.jpg" alt="사진 필름류 기록물 취급 방법">
+			            사진 필름류 기록물 취급 방법(출처 : 국가기록원)
+			        </div>
+			    </li>
+			    <li>
+			        <div class="video-box" onclick="window.open('https://youtu.be/DsUVVLAcPiQ', '_blank')">
+			            <img src="https://img.youtube.com/vi/DsUVVLAcPiQ/0.jpg" alt="기록물 정리 요령">
+			            기록물 정리 요령
+			        </div>
+			    </li>
+			    <li>
+			        <div class="video-box" onclick="window.open('https://youtu.be/ub0mpFju8yo', '_blank')">
+			            <img src="https://img.youtube.com/vi/ub0mpFju8yo/0.jpg" alt="훼손기록물 처리 방법">
+			            훼손기록물 처리 방법(출처 : 국가기록원)
+			        </div>
+			    </li>
+			    <li>
+			        <div class="video-box" onclick="window.open('https://youtu.be/ub0mpFju8yo', '_blank')">
+			            <img src="https://img.youtube.com/vi/ub0mpFju8yo/0.jpg" alt="공문서 종류와 구분">
+			            공문서 종류와 구분
+			        </div>
+			    </li>
+			    <li>
+			        <div class="video-box" onclick="window.open('https://youtu.be/9J2k65LddYI', '_blank')">
+			            <img src="https://img.youtube.com/vi/9J2k65LddYI/0.jpg" alt="스캐너 작동법">
+			            스캐너 작동법(Parasonic)
+			        </div>
+			    </li>
+			    <li>
+			        <div class="video-box" onclick="window.open('https://youtu.be/VqM7zDh0ipM', '_blank')">
+			            <img src="https://img.youtube.com/vi/VqM7zDh0ipM/0.jpg" alt="종이기록물 스캔요령">
+			            종이기록물 스캔요령(출처 : 국가기록원)
+			        </div>
+			    </li>
+			    <li>
+			        <div class="video-box" onclick="window.open('https://youtu.be/0MRrRxNvElg', '_blank')">
+			            <img src="https://img.youtube.com/vi/0MRrRxNvElg/0.jpg" alt="공문서 작성방법">
+			            공문서 작성 방법 - 색인입력 참고자료(출처 : 서울특별시교육청교육연수원)
+			        </div>
+			    </li>
+			    <li>
+			        <div class="video-box" onclick="window.open('https://youtu.be/x79fJ00m8v4', '_blank')">
+			            <img src="https://img.youtube.com/vi/x79fJ00m8v4/0.jpg" alt="표준기록관리 시스템 검색방법">
+			            표준기록관리 시스템 검색방법(출처 : 인천광역시교육연수원)
+			        </div>
+			    </li>
+			    <li>
+			        <div class="video-box" onclick="window.open('https://youtu.be/YZsQF-_x-gk?list=PLpCoNUfU6Md8JXqUsZx2NJ2NQEHPO1V3w', '_blank')">
+			            <img src="https://img.youtube.com/vi/YZsQF-_x-gk/0.jpg" alt="개인정보보호 교육영성">
+			            개인정보처리자용(출처 : 행정안전부, 한국인터넷진흥원)
+			        </div>
+			    </li>
+			    <li>
+			        <div class="video-box" onclick="window.open('https://youtu.be/1uWyqvb2_NU', '_blank')">
+			            <img src="https://img.youtube.com/vi/1uWyqvb2_NU/0.jpg" alt="법정교육 개인정보보호 교육영성">
+			            개인정보보호 교육영상 자료
+			        </div>
+			    </li>
+			    <li>
+			        <div class="video-box" onclick="window.open('https://youtu.be/qcqjRb3m7k8', '_blank')">
+			            <img src="https://img.youtube.com/vi/qcqjRb3m7k8/0.jpg" alt="직장 내 괴롭힘 예방 교육">
+			            직장 내 괴롭힘 예방 교육 영상(출처 : 고용노동부)
+			        </div>
+			    </li>
+			    <li>
+			        <div class="video-box" onclick="window.open('https://youtu.be/a35BQhR6Umg', '_blank')">
+			            <img src="https://img.youtube.com/vi/a35BQhR6Umg/0.jpg" alt="소화기 Full 영상">
+			            소화기 사용법 - 화재예방 교육 자료(출처 : 한국소방안전원)
+			        </div>
+			    </li>
+			</ul>
+        	</body>
+	        </html>
+	    `);
+
+	    newWindow.document.close(); // 문서 닫기
+	});
 	// '.achievement-grid' 요소를 관찰 시작
 	observer.observe(document.querySelector('.achievement-grid'));
 
@@ -1091,14 +1284,43 @@
 	    navLinks.classList.toggle('active');  // 네비게이션 링크에 'active' 클래스 토글
 	});
 
-        // 스크롤 이벤트로 헤더 스타일 변경
+	// 교육영상 링크 클릭 시 노래 목록 표시/숨기기
+	document.getElementById('videoLink').addEventListener('click', function (event) {
+	  const learnList = document.getElementById('learnList'); // learnList 요소 가져오기
+
+	  // hidden 클래스 토글
+	  if (learnList.classList.contains('hidden')) {
+    	  	learnList.classList.remove('hidden');
+		  learnList.classList.add('visible');
+		} else {
+		  learnList.classList.remove('visible');
+		  learnList.classList.add('hidden');
+	  }
+	});
+
+	// 캐롤 클릭 시 새 창에서 유튜브 링크 열기
+	document.getElementById('Rlearn').onclick = function(event) {
+	    event.stopPropagation(); // 부모 요소의 클릭 이벤트 전파 방지
+	    window.open('https://www.youtube.com/watch?v=OTrt7MgdWLk', '_blank'); // 새 창에서 유튜브 링크 열기
+	};
+
+	// '.achievement-grid' 요소를 관찰 시작
+	const achievementGrid = document.querySelector('.achievement-grid'); // 관찰할 요소 선택
+        if (achievementGrid) {
+	      observer.observe(achievementGrid); // observer로 관찰 시작
+        }
+
+	console.log('videoLink 클릭됨');
+	console.log('learnList 상태:', learnList.classList.contains('hidden') ? '숨김' : '표시');
+
+	// 스크롤 이벤트로 헤더 스타일 변경
 	window.addEventListener('scroll', () => {
-	    const header = document.querySelector('.header');  // 헤더 요소 선택
-	    if (window.scrollY > 100) {  // 스크롤 위치가 100픽셀을 초과하면
-        	header.classList.add('scrolled');  // 'scrolled' 클래스 추가
-	    } else {
-        	header.classList.remove('scrolled');  // 그렇지 않으면 'scrolled' 클래스 제거
-	    }
+		const header = document.querySelector('.header');  // 헤더 요소 선택
+		if (window.scrollY > 100) {  // 스크롤 위치가 100픽셀을 초과하면
+        		header.classList.add('scrolled');  // 'scrolled' 클래스 추가
+		} else {
+        		header.classList.remove('scrolled');  // 그렇지 않으면 'scrolled' 클래스 제거
+		  }
 	});
     </script>
 </body>
